@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pong
+spec:
+  selector:
+    matchLabels:
+      app: pong
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pong
+    spec:
+      containers:
+        - name: pong
+          image: index.docker.io/uid09552/pong:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 5000
